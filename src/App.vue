@@ -7,16 +7,16 @@
       <el-row :gutter="20">
         <el-col :span="4" class="el-col-left">
           <el-menu default-active="1">
-            <el-menu-item index="1">
+            <el-menu-item index="1" @click="loadView('home')">
               <span slot="title">Dashboard</span>
             </el-menu-item>
-            <el-menu-item index="2">
+            <el-menu-item index="2" @click="loadView('menu')">
               <span slot="title">Menu</span>
             </el-menu-item>
-            <el-menu-item index="3">
+            <el-menu-item index="3" @click="loadView('bills')">
               <span slot="title">Bills</span>
             </el-menu-item>
-            <el-menu-item index="4">
+            <el-menu-item index="4" @click="loadView('admin')">
               <span slot="title">Admin</span>
             </el-menu-item>
           </el-menu>
@@ -30,12 +30,15 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+  },
+  methods: {
+    loadView(view){
+      this.$router.push({name: view})
+    }
   }
 };
 </script>
@@ -51,6 +54,7 @@ export default {
 }
 .el-header {
   height: 60px;
+  padding-top: 20px !important;
   background-color: aliceblue;
 }
 .el-row {
@@ -59,9 +63,13 @@ export default {
 .el-col-left {
   text-align: left;
 }
+.el-menu {
+  border-right-style: none !important;
+}
 .grid-content {
   background-color: aliceblue;
   border-radius: 4px;
   min-height: 360px;
+  padding: 10px;
 }
 </style>
